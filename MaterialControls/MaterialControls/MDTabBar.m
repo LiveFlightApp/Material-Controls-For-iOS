@@ -91,7 +91,7 @@
   [tabBar updateSelectedIndex:self.selectedSegmentIndex];
 }
 
-- (void)sameButtonTapped {
+- (void)buttonTapped {
     if (tabBar.delegate) {
         [tabBar.delegate didPressButton];
     }
@@ -364,8 +364,6 @@
           [((MDRippleLayer *)layer)
               startEffectsAtLocation:[view convertPoint:point fromView:self]];
             
-            [self sameButtonTapped];
-            
           return;
         }
       }
@@ -392,6 +390,7 @@
     for (CALayer *layer in beingTouchedView.layer.sublayers) {
       if ([layer isKindOfClass:[MDRippleLayer class]]) {
         [((MDRippleLayer *)layer)stopEffects];
+        [self buttonTapped];
       }
     }
 
