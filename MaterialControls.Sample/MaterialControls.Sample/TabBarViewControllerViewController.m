@@ -127,4 +127,13 @@
               didMoveToIndex:(NSUInteger)index {
 }
 
+/**
+ Handles tap on a tab bar button
+ */
+-(void)tabBarInteractionOccurred {
+    
+    NSLog(@"Did interact with tab bar");
+    
+}
+
 @end

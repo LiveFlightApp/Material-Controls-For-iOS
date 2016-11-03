@@ -91,6 +91,12 @@
   [tabBar updateSelectedIndex:self.selectedSegmentIndex];
 }
 
+- (void)sameButtonTapped {
+    if (tabBar.delegate) {
+        [tabBar.delegate didPressButton];
+    }
+}
+
 - (void)observeValueForKeyPath:(NSString *)keyPath
                       ofObject:(id)object
                         change:(NSDictionary *)change
@@ -357,6 +363,9 @@
         if ([layer isKindOfClass:[MDRippleLayer class]]) {
           [((MDRippleLayer *)layer)
               startEffectsAtLocation:[view convertPoint:point fromView:self]];
+            
+            [self sameButtonTapped];
+            
           return;
         }
       }

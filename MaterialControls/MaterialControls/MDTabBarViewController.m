@@ -260,12 +260,29 @@
     [self.delegate tabBarViewController:self
                          didMoveToIndex:_tabBar.selectedIndex];
   }
+    
+  // interaction occurred
+  [self didPressButton];
+    
 }
 
 #pragma mark - MDTabBar Delegate
 - (void)tabBar:(MDTabBar *)tabBar
     didChangeSelectedIndex:(NSUInteger)selectedIndex {
-  [self moveToPage:selectedIndex];
+    
+    // move page
+    [self moveToPage:selectedIndex];
+  
+}
+
+-(void)didPressButton {
+    
+    // call delegate
+    if ([self.delegate
+         respondsToSelector:@selector(tabBarInteractionOccurred)]) {
+        [self.delegate tabBarInteractionOccurred];
+    }
+    
 }
 
 #pragma mark - ScrollView Delegate

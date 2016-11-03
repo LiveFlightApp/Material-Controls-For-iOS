@@ -31,6 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol MDTabBarDelegate <NSObject>
 - (void)tabBar:(MDTabBar *)tabBar
     didChangeSelectedIndex:(NSUInteger)selectedIndex;
+- (void)didPressButton;
 @end
 
 IB_DESIGNABLE
