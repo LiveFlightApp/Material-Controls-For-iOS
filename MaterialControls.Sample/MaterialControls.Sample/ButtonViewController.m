@@ -34,6 +34,7 @@
   self.title = @"MDButton";
     self.buttonRotationOneImage.mdButtonDelegate = self;
     self.buttonRotationTwoImages.mdButtonDelegate = self;
+    _setImage = 0;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -53,6 +54,25 @@ preparation before navigation
 */
 
 - (IBAction)touchUpInside:(id)sender {
+    
+    if (_setImage == 0) {
+    
+        // Change image
+        [self.FlatButton setImageNormal:[UIImage imageNamed:@"bt-icon1"]];
+     
+        // Set index
+        _setImage = 1;
+        
+    } else if (_setImage == 1) {
+        
+        // Change image
+        [self.FlatButton setImageNormal:[UIImage imageNamed:@"bt-icon2"]];
+        
+        // Set index
+        _setImage = 0;
+        
+    }
+    
 }
 
 -(void)rotationStarted:(id)sender {

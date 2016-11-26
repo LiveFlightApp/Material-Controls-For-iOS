@@ -58,6 +58,8 @@ IB_DESIGNABLE
                          type:(MDButtonType)buttonType
                   rippleColor:(nullable UIColor *)rippleColor;
 
+- (void)setImageNormal:(UIImage *)imageNormal;
+
 @end
 NS_ASSUME_NONNULL_END
 #endif

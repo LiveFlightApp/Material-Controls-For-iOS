@@ -163,7 +163,13 @@
 - (void)setImageNormal:(UIImage *)imageNormal {
   _imageNormal = imageNormal;
 
-  if (_btImage == nil) {
+    if (_btImage != nil) {
+
+        // Remove old image
+        _btImage.removeFromSuperview;
+        
+    }
+    
     _btImage = [[UIImageView alloc] initWithImage:_imageNormal];
 
     if (_imageSize) {
@@ -176,7 +182,7 @@
     _btImage.clipsToBounds = NO;
 
     [self addSubview:_btImage];
-  }
+  
 }
 
 - (void)setImageSize:(CGFloat)imageSize {
