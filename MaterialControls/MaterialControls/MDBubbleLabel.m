@@ -111,7 +111,7 @@
 
   [path moveToPoint:bottom];
   [path addArcWithCenter:arcCenter
-                  radius:bounds.size.width / 2
+                  radius:bounds.size.width
               startAngle:M_PI_2 - angle
                 endAngle:M_PI_2 + angle
                clockwise:NO];
