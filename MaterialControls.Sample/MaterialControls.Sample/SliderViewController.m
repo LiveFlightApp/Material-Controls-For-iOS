@@ -22,7 +22,7 @@
 
 #import "SliderViewController.h"
 
-@interface SliderViewController ()
+@interface SliderViewController () <MDSliderDelegate>
 
 @end
 
@@ -66,6 +66,10 @@
       [NSString stringWithFormat:@"%.f", _discreteSilder.value];
   _continuousSliderValue.text =
       [NSString stringWithFormat:@"%.01f", _mdSlider.value];
+    
+    // Register delegate methods
+    _discreteSilder.mdSliderDelegate = self;
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -98,4 +102,13 @@ preparation before navigation
   _mdSlider.enabled = ((UISwitch *)sender).on;
   _discreteSilder.enabled = ((UISwitch *)sender).on;
 }
+    
+- (void) markerTouchStarted:(id)sender {
+    NSLog(@"Marker touch started");
+}
+    
+- (void) markerTouchEnded:(id)sender {
+    NSLog(@"Marker touch ended");
+}
+    
 @end

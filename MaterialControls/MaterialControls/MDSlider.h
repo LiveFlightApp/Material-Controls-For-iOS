@@ -24,9 +24,18 @@
 #define kMDAnimationDuration .2f
 
 NS_ASSUME_NONNULL_BEGIN
+@protocol MDSliderDelegate <NSObject>
+    
+@optional
+- (void)markerTouchStarted:(id)sender;
+- (void)markerTouchEnded:(id)sender;
+@end
+
+
 IB_DESIGNABLE
 @interface MDSlider : UIControl
-
+    
+@property(nonatomic, weak) id<MDSliderDelegate> mdSliderDelegate;
 @property(nonatomic) IBInspectable CGFloat value;
 @property(nonatomic) IBInspectable CGFloat maximumValue;
 @property(nonatomic) IBInspectable CGFloat minimumValue;

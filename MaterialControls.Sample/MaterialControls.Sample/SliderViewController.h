@@ -23,7 +23,7 @@
 #import <UIKit/UIKit.h>
 #import <MaterialControls/MDSlider.h>
 
-@interface SliderViewController : UIViewController
+@interface SliderViewController : UIViewController <MDSliderDelegate>
 @property(weak, nonatomic) IBOutlet MDSlider *mdSlider;
 @property(weak, nonatomic) IBOutlet MDSlider *discreteSilder;
 - (IBAction)discreteSliderValueChanged:(id)sender;

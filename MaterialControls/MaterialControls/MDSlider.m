@@ -551,6 +551,7 @@
   CGPoint point = [touches.allObjects[0] locationInView:trackView];
   [self calculateValueFromTouchPoint:point];
   [thumbView focused:nil];
+  [_mdSliderDelegate markerTouchStarted:self];
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -560,10 +561,12 @@
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
   [thumbView lostFocused:nil];
+  [_mdSliderDelegate markerTouchEnded:self];
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
   [thumbView lostFocused:nil];
+  [_mdSliderDelegate markerTouchEnded:self];
 }
 
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
