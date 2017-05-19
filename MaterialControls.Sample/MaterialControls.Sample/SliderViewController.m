@@ -66,7 +66,7 @@
       [NSString stringWithFormat:@"%.f", _discreteSilder.value];
   _continuousSliderValue.text =
       [NSString stringWithFormat:@"%.01f", _mdSlider.value];
-    
+    _discreteSilder.slideEnabled = TRUE;
     // Register delegate methods
     _discreteSilder.mdSliderDelegate = self;
     

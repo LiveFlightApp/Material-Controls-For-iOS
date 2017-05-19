@@ -548,15 +548,23 @@
 
 #pragma mark touch events
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-  CGPoint point = [touches.allObjects[0] locationInView:trackView];
-  [self calculateValueFromTouchPoint:point];
+
+  // Check if slide is enabled
+  if (_slideEnabled) {
+    CGPoint point = [touches.allObjects[0] locationInView:trackView];
+    [self calculateValueFromTouchPoint:point];
+  }
+    
   [thumbView focused:nil];
   [_mdSliderDelegate markerTouchStarted:self];
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-  CGPoint point = [touches.allObjects[0] locationInView:trackView];
-  [self calculateValueFromTouchPoint:point];
+    // Check if slide is enabled
+    if (_slideEnabled) {
+        CGPoint point = [touches.allObjects[0] locationInView:trackView];
+        [self calculateValueFromTouchPoint:point];
+    }
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {

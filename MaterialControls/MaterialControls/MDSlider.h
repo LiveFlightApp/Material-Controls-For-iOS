@@ -48,6 +48,7 @@ IB_DESIGNABLE
 @property(nullable, nonatomic) IBInspectable UIImage *leftImage;
 @property(nullable, nonatomic) IBInspectable UIImage *rightImage;
 @property(nonatomic, getter=isEnabled) IBInspectable BOOL enabled;
+@property(nonatomic, getter=isSlideEnabled) IBInspectable BOOL slideEnabled;
 @property(nonatomic) IBInspectable CGFloat step;
 @property(nonatomic) IBInspectable BOOL enabledValueLabel;
 @property(nonatomic) IBInspectable NSUInteger precision;
