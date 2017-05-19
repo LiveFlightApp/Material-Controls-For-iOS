@@ -57,7 +57,7 @@
   [self addSubview:label];
 
   [self setupConstraints];
-  self.backgroundColor = [UIColorHelper colorWithRGBA:kMDColorPrimary500];
+  self.backgroundColor = [[UIColor alloc] initWithRed:0.0 green:0.0 blue:0.0 alpha:0.9];
   self.layer.masksToBounds = YES;
   [self updateMark];
   [self addObserver:self forKeyPath:@"bounds" options:0 context:nil];

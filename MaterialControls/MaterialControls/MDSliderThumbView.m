@@ -265,14 +265,7 @@
 }
 
 - (void)changeBubbleColor:(UIColor *)color animated:(BOOL)animated {
-  if (animated) {
-    [UIView animateWithDuration:kMDAnimationDuration
-                     animations:^{
-                       _bubble.backgroundColor = color;
-                     }];
-  } else {
-    _bubble.backgroundColor = color;
-  }
+    /// Bubble colour is kept constant
 }
 
 - (void)setEnableBubble:(BOOL)enabled {
