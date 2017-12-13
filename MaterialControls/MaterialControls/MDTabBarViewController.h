@@ -45,10 +45,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, readonly) MDTabBar *tabBar;
 @property(nonatomic, weak) id<MDTabBarViewControllerDelegate> delegate;
 @property(nonatomic) NSUInteger selectedIndex;
-@property(nonatomic) BOOL allowGestureScrolling;
 
 - (instancetype)initWithDelegate:(id<MDTabBarViewControllerDelegate>)delegate;
 - (void)setItems:(NSArray<id> *)items;
+- (void)setGestureScrollEnabled:(BOOL)enabled;
 
 @end
 NS_ASSUME_NONNULL_END

@@ -60,7 +60,6 @@
   for (UIView *v in pageController.view.subviews) {
     if ([v isKindOfClass:[UIScrollView class]]) {
       ((UIScrollView *)v).delegate = self;
-      ((UIScrollView *)v).scrollEnabled = !_allowGestureScrolling;
     }
   }
 
@@ -133,6 +132,14 @@
                             didMoveToIndex:weakSelf->_tabBar.selectedIndex];
                 }
               }];
+}
+
+- (void)setGestureScrollEnabled:(BOOL)enabled {
+    for (UIView *v in pageController.view.subviews) {
+        if ([v isKindOfClass:[UIScrollView class]]) {
+            ((UIScrollView *)v).scrollEnabled = enabled;
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning {
