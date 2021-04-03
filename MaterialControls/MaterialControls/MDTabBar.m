@@ -53,9 +53,12 @@
   MDTabBar *tabBar;
 }
 
+UIColor *lightColor;
+
 - (instancetype)initWithTabBar:(MDTabBar *)bar {
   if (self = [super init]) {
     _tabs = [NSMutableArray array];
+    lightColor = [UIColor colorWithRed:34.0/255.0 green:179.0/255.0 blue:204.0/255.0 alpha:1.0];
     indicatorView = [[UIView alloc]
         initWithFrame:CGRectMake(0, kMDTabBarHeight - kMDIndicatorHeight, 0,
                                  kMDIndicatorHeight)];
@@ -64,11 +67,37 @@
     [self addTarget:self
                   action:@selector(selectionChanged:)
         forControlEvents:UIControlEventValueChanged];
+      if (@available(iOS 13.0, *)) {
+          if ([[self traitCollection] userInterfaceStyle] == UIUserInterfaceStyleDark) {
+              [self setSelectedSegmentTintColor:[UIColor blackColor]];
+          } else {
+              [self setSelectedSegmentTintColor:lightColor];
+          }
+      } else {
+          // Fallback on earlier versions
+      }
     tabBar = bar;
       
   }
 
   return self;
+}
+
+-(void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
+    if (@available(iOS 12.0, *)) {
+        if (@available(iOS 13.0, *)) {
+            if ([[self traitCollection] userInterfaceStyle] == UIUserInterfaceStyleDark) {
+                [self setSelectedSegmentTintColor:[UIColor blackColor]];
+            } else {
+                [self setSelectedSegmentTintColor:lightColor];
+            }
+        }
+        if ([[self traitCollection] userInterfaceStyle] == UIUserInterfaceStyleDark) {
+            [tabBar setBackgroundColor:[UIColor blackColor]];
+        } else {
+            [tabBar setBackgroundColor:lightColor];
+        }
+    }
 }
 
 - (void)willMoveToSuperview:(UIView *)newSuperview {
@@ -455,7 +484,7 @@
   self.horizontalInset = 8;
 
   segmentedControl = [[MDSegmentedControl alloc] initWithTabBar:self];
-  [segmentedControl setTintColor:[UIColor clearColor]];
+  //[segmentedControl setTintColor:[UIColor labelColor]];
 
   scrollView = [[UIScrollView alloc] init];
   [scrollView setShowsHorizontalScrollIndicator:NO];
